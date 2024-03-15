@@ -1,0 +1,169 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<!doctype html>
+<html lang="en" class="w-full h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>noflags.sh</title>
+  </head>
+  <body
+    class="w-full h-full flex items-center justify-center bg-slate-900 text-slate-100"
+  >
+    <div
+      class="max-w-4xl w-full bg-slate-800 p-4 rounded-lg shadow-2xl space-y-3"
+    >
+      <h1 class="text-3xl font-bold flex flex-row items-center gap-1">
+        <Icon name="fluent:flag-off-24-regular" class="size-8" />
+        noflags.sh
+      </h1>
+      <h2 class="text-xl font-semibold">Options</h2>
+      <div class="flex flex-col gap-2 md:flex-row">
+        <div class="flex flex-col grow gap-2">
+          <div class="input">
+            <label
+              for="filename"
+              class="label flex flex-row items-center gap-1"
+            >
+              <Icon name="fluent:archive-20-regular" class="size-5" />
+              Filename
+            </label>
+            <input
+              id="filename"
+              type="text"
+              autocapitalize="off"
+              autocomplete="off"
+              value="server.jar"
+              class="textbox"
+            />
+            <div class="text-sm text-slate-400">
+              The name of the file used to launch the server.
+            </div>
+          </div>
+          <div class="input">
+            <label for="memory" class="label flex flex-row items-center gap-1">
+              <Icon name="fluent:wrench-20-regular" class="size-5" />
+              Memory
+            </label>
+            <input
+              id="memory"
+              type="number"
+              min="0"
+              max="32"
+              value="4"
+              step="0.5"
+              class="textbox"
+            />
+          </div>
+          <div class="input">
+            <label for="env" class="label flex flex-row items-center gap-1">
+              <Icon name="fluent:diversity-20-regular" class="size-5" />
+              Environment
+            </label>
+            <select id="env" class="textbox">
+              <option value="linux" selected>Linux</option>
+              <option value="windows">Windows</option>
+              <option value="raw">Command</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex flex-col grow gap-2">
+          <div class="input">
+            <label for="version" class="label flex flex-row items-center gap-1">
+              <Icon name="fluent:calendar-date-20-regular" class="size-5" />
+              JVM version
+            </label>
+            <select id="version" class="textbox">
+              <option value="21">21+</option>
+              <option value="17" selected>11-20</option>
+              <option value="8">8</option>
+            </select>
+          </div>
+          <div class="input">
+            <label for="gui" class="label flex flex-row items-center gap-1">
+              <input
+                id="gui"
+                type="checkbox"
+                class="w-4 h-4 rounded focus:ring-teal-500 text-teal-500 bg-slate-800 focus:ring-offset-slate-800"
+              />
+              <Icon
+                name="fluent:card-ui-20-regular"
+                class="size-5 text-slate-400"
+              />
+              GUI
+            </label>
+            <div class="text-sm text-slate-400">
+              Enable the built-in GUI for the server.
+            </div>
+          </div>
+          <div class="input">
+            <label for="restart" class="label flex flex-row items-center gap-1">
+              <input
+                id="restart"
+                type="checkbox"
+                class="w-4 h-4 rounded focus:ring-teal-500 text-teal-500 bg-slate-800 focus:ring-offset-slate-800"
+              />
+              <Icon
+                name="fluent:arrow-repeat-all-20-regular"
+                class="size-5 text-slate-400"
+              />
+              Auto-restart
+            </label>
+            <div class="text-sm text-slate-400">
+              Enable automatic restart on crash or stop.
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2 class="text-xl font-semibold flex flex-row items-center gap-3">
+        Result
+        <button
+          id="copy"
+          class="text-slate-300 text-sm flex flex-row items-center gap-1 p-1 bg-slate-700 rounded hover:bg-slate-600 focus:bg-slate-600"
+        >
+          <Icon name="fluent:copy-20-regular" class="size-5" />
+          <span id="copy-text">Copy!</span>
+        </button>
+      </h2>
+      <code
+        id="result"
+        class="block font-mono bg-slate-900 p-2 rounded whitespace-pre-wrap"
+        >#!/bin/sh java -Xms4096M -Xmx4096M -XX:+UseZGC -jar server.jar --nogui
+      </code>
+      <footer class="text-sm text-slate-400">
+        Made by <a href="https://skye.vg" class="underline">@skyevg</a>. Not
+        meant as a negative statement to any person, group or project in
+        particular.
+        <a href="/about.html" class="underline">About</a>
+      </footer>
+    </div>
+    <script src="../scripts/main.ts"></script>
+  </body>
+</html>
+
+<style>
+  .input {
+    @apply flex flex-col;
+  }
+
+  .label {
+    @apply text-lg font-semibold text-slate-300;
+  }
+
+  .textbox {
+    @apply bg-slate-700 rounded p-1 focus:border-teal-500 focus:ring-0 outline-none;
+  }
+
+  input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+</style>

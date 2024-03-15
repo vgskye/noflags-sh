@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<!doctype html>
+<html lang="en" class="w-full h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>noflags.sh - About</title>
+  </head>
+  <body
+    class="w-full h-full flex items-center justify-center bg-slate-900 text-slate-100"
+  >
+    <div
+      class="max-w-4xl w-full bg-slate-800 p-4 rounded-lg shadow-2xl space-y-3"
+    >
+      <h1 class="text-3xl font-bold flex flex-row items-center gap-1">About</h1>
+      <p>
+        Okay, so, JVM flags. You know them, and you either love or hate them. <br
+        />
+        Honestly? The default flags are the best for general purpose use. After all,
+        they're tuned by the OpenJDK people, and they know best about OpenJDK. <br
+        />
+        While someone sufficiently knowledgeble about JVM internals and the specific
+        hardware-workload combo can apparently tune it to be better, there's no silver
+        bullet flag set. <br />
+        After all, if there was a silver bullet flag set that improved performance
+        every time, OpenJDK would adopt them as default, they're smart people after
+        all. <br />
+        While you can get improvements by selecting the best GC for "general MC workload",
+        that is one or two flags at most(and is presented by this semi-parody website)
+        and requires at most two braincells to understand.
+      </p>
+      <footer class="text-sm text-slate-400">
+        Made by <a href="https://skye.vg" class="underline">@skyevg</a>. Not
+        meant as a negative statement to any person, group or project in
+        particular.
+        <a href="/" class="underline">Home</a>
+      </footer>
+    </div>
+    <script src="../scripts/main.ts"></script>
+  </body>
+</html>
+
+<style></style>
