@@ -16,7 +16,10 @@ function update() {
       flags = "-XX:+UseZGC -XX:+ZGenerational";
       break;
     case "17":
-      flags = "-XX:+UseZGC";
+      if (env.value == "client")
+        flags = "-XX:+UseShenandoahGC";
+      else
+        flags = "-XX:+UseZGC";
       break;
     case "8":
       flags = "-XX:+UseG1GC";
@@ -66,6 +69,9 @@ goto :start`;
       }
       break;
     case "raw":
+      break;
+    case "client":
+      script = `${ram_flag} ${flags}`;
       break;
   }
 
